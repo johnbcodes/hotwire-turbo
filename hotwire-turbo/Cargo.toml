@@ -2,6 +2,12 @@
 name = "hotwire-turbo"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+keywords = ["hotwire", "turbo", "html"]
+description = "Generate HTML custom element payloads compatible with Hotwire Turbo and Turbo Power"
+repository = "https://github.com/johnbcodes/hotwire-turbo"
+documentation = "https://docs.rs/hotwire-turbo-axum"
+readme = "../README.md"
 
 [dependencies]
 html-escape = "0.2"

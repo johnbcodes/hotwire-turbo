@@ -2,6 +2,13 @@
 name = "hotwire-turbo-axum"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+keywords = ["hotwire", "turbo", "axum"]
+description = "Axum integration for hotwire-turbo"
+repository = "https://github.com/johnbcodes/hotwire-turbo"
+documentation = "https://docs.rs/hotwire-turbo-axum"
+readme = "../README.md"
+
 
 [dependencies]
 axum = { version = "0.6", default-features = false, features = [] }
