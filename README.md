@@ -23,5 +23,3 @@ and [turbo_power-rails StreamHelper] (https://github.com/marcoroth/turbo_power-r
 [![Crates.io](https://img.shields.io/crates/v/hotwire-turbo-axum)](https://crates.io/crates/hotwire-turbo-axum)
 [![docs](https://img.shields.io/badge/API-docs-blue.svg)](https://docs.rs/hotwire-turbo)
 [![docs](https://img.shields.io/badge/API-docs-blue.svg)](https://docs.rs/hotwire-turbo-axum)
-
-Generate HTML custom element payloads compatible with Hotwire Turbo and Turbo Power.
