@@ -1,0 +1,5 @@
+[workspace]
+members = ["hotwire-turbo*"]
+# Only check / build main crates by default (check all with `--workspace`)
+default-members = ["hotwire-turbo*"]
+resolver = "2"
