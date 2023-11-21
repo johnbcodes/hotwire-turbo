@@ -11,6 +11,11 @@ pub fn toggle_css_class(targets: &str, classes: &str) -> String {
     turbo_stream_target_all("toggle_css_class", targets, &mut attributes, "")
 }
 
+pub fn replace_css_class(targets: &str, from: &str, to: &str) -> String {
+    let mut attributes = BTreeMap::from([("from", from), ("to", to)]);
+    turbo_stream_target_all("replace_css_class", targets, &mut attributes, "")
+}
+
 pub fn clear_local_storage() -> String {
     clear_storage("local")
 }
@@ -244,6 +249,7 @@ pub fn turbo_progress_bar_show() -> String {
 
 #[cfg(test)]
 mod tests {
+    use pretty_assertions::assert_eq;
 
     #[test]
     fn add_css_class() {
@@ -261,6 +267,12 @@ mod tests {
             expected,
             super::toggle_css_class("#element", "container text-center")
         );
+    }
+
+    #[test]
+    fn replace_css_class() {
+        let expected = r##"<turbo-stream action="replace_css_class" from="one" targets="#element" to="two"><template></template></turbo-stream>"##;
+        assert_eq!(expected, super::replace_css_class("#element", "one", "two"));
     }
 
     #[test]

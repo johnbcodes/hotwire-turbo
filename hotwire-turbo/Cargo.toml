@@ -11,3 +11,6 @@ readme = "../README.md"
 
 [dependencies]
 html-escape = "0.2"
+
+[dev-dependencies]
+pretty_assertions = "1.4"
