@@ -1,4 +1,4 @@
-use axum::body::{Bytes, Full};
+use axum::body::Body;
 use axum::http::{header, HeaderValue};
 use axum::response::{IntoResponse, Response};
 
@@ -11,7 +11,7 @@ pub struct TurboStream<T>(pub T);
 
 impl<T> IntoResponse for TurboStream<T>
 where
-    T: Into<Full<Bytes>>,
+    T: Into<Body>,
 {
     fn into_response(self) -> Response {
         (
@@ -35,6 +35,7 @@ impl<T> From<T> for TurboStream<T> {
 mod tests {
     use super::*;
     use axum::{body::Body, http::Request, routing::get, Router};
+    use http_body_util::BodyExt;
     use tower::ServiceExt;
 
     async fn test() -> impl IntoResponse {
@@ -43,7 +44,7 @@ mod tests {
 
     #[tokio::test]
     async fn content_type() {
-        let app = Router::<_, Body>::new().route("/test", get(test));
+        let app = Router::new().route("/test", get(test));
 
         let res = app
             .clone()
@@ -59,7 +60,7 @@ mod tests {
 
     #[tokio::test]
     async fn body() {
-        let app = Router::<_, Body>::new().route("/test", get(test));
+        let app = Router::new().route("/test", get(test));
 
         let res = app
             .clone()
@@ -76,7 +77,7 @@ mod tests {
         B: axum::body::HttpBody,
         B::Error: std::fmt::Debug,
     {
-        let bytes = hyper::body::to_bytes(body).await.unwrap();
+        let bytes = body.collect().await.unwrap().to_bytes();
         String::from_utf8(bytes.to_vec()).unwrap()
     }
 }
