@@ -1,3 +1,5 @@
+# ***No longer working on this. Switched my frontend efforts to htmx and hyperscript***
+
 # hotwire-turbo
 
 > Generate HTML custom element payloads compatible with [Hotwire Turbo](https://github.com/hotwired/turbo) and [Turbo Power](https://github.com/marcoroth/turbo_power).
